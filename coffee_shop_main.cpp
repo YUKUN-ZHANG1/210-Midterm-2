@@ -73,10 +73,11 @@ int createNameArray (string filename, string* names) {
     }
 
     inputFile.clear();
-    inputFile.seekg(0, ios::beg);
+    inputFile.seekg(0);
 
     if(count == 0)
         return -1;
+
     names = new string[count];
     int i = 0;
 
@@ -112,7 +113,7 @@ void open(string* names, int names_size, DoublyLinkedList& coffeeShopLine){
             line_size ++;
         }
         if(isHappened(NEW_CUSTOMER_JOIN_PERCENTAGE)){
-            insertVIPCustomer(coffeeShopLine, getRandomName(names, names_size));
+            insertCustomer(coffeeShopLine, getRandomName(names, names_size));
             line_size ++;
         }
         if(line_size>0 && isHappened(HELP_FRONT_CUSTOMER_PERCENTAGE)){
