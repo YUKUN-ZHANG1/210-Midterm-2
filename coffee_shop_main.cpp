@@ -25,6 +25,7 @@ bool isHappened (double probability){
     if(prob <= probability) {
         return true;
     }
+    return false;
 }
 
 string getRandomName (string* names, int names_size){
@@ -34,27 +35,27 @@ string getRandomName (string* names, int names_size){
 
 void insertCustomer (DoublyLinkedList& coffeeShopLine, string name){
     coffeeShopLine.push_back(name);
-    cout<<name<<" joins the line"<<endl;
+    cout<<"    "<<name<<" joins the line"<<endl;
 }
 
 void insertVIPCustomer (DoublyLinkedList& coffeeShopLine, string name){
     coffeeShopLine.push_front(name);
-    cout<<name<<" (VIP) joins the front of the line"<<endl;
+    cout<<"    "<<name<<" (VIP) joins the front of the line"<<endl;
 }
 
 void serviceCustomer (DoublyLinkedList& coffeeShopLine){
-    cout<<coffeeShopLine.get_pos(1)<<" is served"<<endl;
+    cout<<"    "<<coffeeShopLine.get_pos(1)<<" is served"<<endl;
     coffeeShopLine.pop_front();
 }
 
 void left_line(DoublyLinkedList& coffeeShopLine, int& LineSize){
     int value = rand() % (LineSize)+1;
-    cout<<coffeeShopLine.get_pos(value)<<" left the line"<<endl;
+    cout<<"    "<<coffeeShopLine.get_pos(value)<<" left the line"<<endl;
     coffeeShopLine.delete_pos(value);
 }
 
 void last_left_line(DoublyLinkedList& coffeeShopLine, int& LineSize){
-    cout<<coffeeShopLine.get_pos(LineSize)<<" (at the rear) left the line"<<endl;
+    cout<<"    "<<coffeeShopLine.get_pos(LineSize)<<" (at the rear) left the line"<<endl;
     coffeeShopLine.pop_back();
 }
 
@@ -96,13 +97,39 @@ void initializeLine(string* names, int names_size, DoublyLinkedList& coffeeShopL
 }
 
 
-void update(string* names, int names_size, DoublyLinkedList& coffeeShopLine){
+void open(string* names, int names_size, DoublyLinkedList& coffeeShopLine){
     int line_size = 5;
+    cout<<endl<<"Store opens:"<<endl;
     initializeLine(names, names_size, coffeeShopLine);
     cout<<endl;
+    cout<<"    Resulting line: "<<endl;
     coffeeShopLine.print();
+    cout<<endl;
     for(int i = 2; i <= TIMES; i++){
-        if(isHappened())
+        cout<<"Time step #"<<i<<":"<<endl;
+        if(isHappened(VIP_CUSTOMER_PERCENTAGE)){
+            insertVIPCustomer(coffeeShopLine, getRandomName(names, names_size));
+            line_size ++;
+        }
+        if(isHappened(NEW_CUSTOMER_JOIN_PERCENTAGE)){
+            insertVIPCustomer(coffeeShopLine, getRandomName(names, names_size));
+            line_size ++;
+        }
+        if(line_size>0 && isHappened(HELP_FRONT_CUSTOMER_PERCENTAGE)){
+            serviceCustomer(coffeeShopLine);
+            line_size --;
+        }
+        if(line_size>0 && isHappened(ANY_CUSTOMER_LEAVE_PERCENTAGE)){
+            left_line(coffeeShopLine, line_size);
+            line_size --;
+        }
+        if(line_size>0 && isHappened(LEAVE_QUEUE_END_PERCENTAGE)){
+            last_left_line(coffeeShopLine, line_size);
+            line_size --;
+        }
+        cout<<"    Resulting line: "<<endl;
+        coffeeShopLine.print();
+        cout<<endl;
     }
 }
 
@@ -114,8 +141,7 @@ int main() {
         return 1;
 
     DoublyLinkedList coffeeShopLine;
-
-
+    open(names, names_size, coffeeShopLine);
     return 0;
 }
 

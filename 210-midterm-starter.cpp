@@ -214,7 +214,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->name << endl;//changed
+            cout << "          " << current->name << endl;//changed
             current = current->next;
         }
         cout << endl;
@@ -234,9 +234,3 @@ public:
     }
 };
 
-int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
-
-    
-    return 0;
-}
