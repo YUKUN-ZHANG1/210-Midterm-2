@@ -43,12 +43,20 @@ void insertVIPCustomer (DoublyLinkedList& coffeeShopLine, string name){
 }
 
 void serviceCustomer (DoublyLinkedList& coffeeShopLine){
-    cout<<coffeeShopLine.
+    cout<<coffeeShopLine.get_pos(1)<<" is served"<<endl;
     coffeeShopLine.pop_front();
 }
 
+void left_line(DoublyLinkedList& coffeeShopLine, int& LineSize){
+    int value = rand() % (LineSize)+1;
+    cout<<coffeeShopLine.get_pos(value)<<" left the line"<<endl;
+    coffeeShopLine.delete_pos(value);
+}
 
-
+void last_left_line(DoublyLinkedList& coffeeShopLine, int& LineSize){
+    cout<<coffeeShopLine.get_pos(LineSize)<<" (at the rear) left the line"<<endl;
+    coffeeShopLine.pop_back();
+}
 
 int createNameArray (string filename, string* names) {
     ifstream inputFile("names.txt"); 

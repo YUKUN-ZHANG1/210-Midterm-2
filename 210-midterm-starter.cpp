@@ -77,7 +77,34 @@ public:
     }
 
     string get_pos(int pos) {
-        
+        if (!head) {
+            cout << "List is empty." << endl;
+            return "";
+        }
+    
+        if (pos == 1) {
+            return head->name;
+        }
+    
+        Node* temp = head;
+    
+        for (int i = 1; i < pos; i++){
+            if (!temp) {
+                cout << "Position doesn't exist." << endl;
+                return "";
+            }
+            else
+                temp = temp->next;
+        }
+        if (!temp) {
+            cout << "Position doesn't exist." << endl;
+            return "";
+        }
+    
+        if (!temp->next) {
+            return tail->name;
+        }
+        return temp->name;
     }
 
     void delete_pos(int pos) {
