@@ -72,8 +72,8 @@ int createNameArray (string filename, string* names) {
         count++;
     }
 
-    inputFile.clear();
-    inputFile.seekg(0);
+    inputFile.close();
+    inputFile.open(filename);
 
     if(count == 0)
         return -1;
