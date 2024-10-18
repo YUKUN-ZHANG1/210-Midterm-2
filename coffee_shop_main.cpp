@@ -11,3 +11,10 @@
 #include "210-midterm-starter.cpp"
 using namespace std;
 
+const string FILENNAME;
+
+
+int main() {
+    return 0;
+}
+
