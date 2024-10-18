@@ -12,33 +12,57 @@
 #include "210-midterm-starter.cpp"
 using namespace std;
 
-const string FILENNAME = "names";
+const string FILENNAME = "names.txt";
+const int TIMES = 20;
+const double HELP_FRONT_CUSTOMER_PERCENTAGE = 40;
+const double NEW_CUSTOMER_JOIN_PERCENTAGE = 60;
+const double LEAVE_QUEUE_END_PERCENTAGE = 20;
+const double ANY_CUSTOMER_LEAVE_PERCENTAGE = 10;
+const double VIP_CUSTOMER_PERCENTAGE = 10;
+
 
 int createNameArray (string filename, string* names) {
     ifstream inputFile("names.txt"); 
     if (!inputFile) {
         cout << "File open failure" << endl;
-        return 1;
+        return -1;
     }
 
     int count = 0;
     string name = "";
-    while (std::getline(inputFile, name)) {
+    while (getline(inputFile, name)) {
         count++;
     }
 
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
 
-    if
+    if(count == 0)
+        return -1;
     names = new string[count];
-    
+    int i = 0;
+
+    while (getline(inputFile, name)) {
+        names[i] = name;
+        i++;
+    }
+
+    inputFile.close();
+
+    return count;
 }
+
 
 
 int main() {
     string* names;
     int names_size = createNameArray(FILENNAME, names);
+    if (names_size <= 0)
+        return 1;
+
+    DoublyLinkedList coffeeShopLine;
+    
+
 
     return 0;
 }
