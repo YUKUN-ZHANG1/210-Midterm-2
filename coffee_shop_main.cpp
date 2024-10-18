@@ -11,7 +11,7 @@
 #include "210-midterm-starter.cpp"
 using namespace std;
 
-const string FILENNAME;
+const string FILENNAME = "names";
 
 
 int main() {
