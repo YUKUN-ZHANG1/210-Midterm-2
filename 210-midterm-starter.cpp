@@ -214,7 +214,7 @@ public:
             return;
         }
         while (current) {
-            cout << current->name << " ";
+            cout << current->name << endl;//changed
             current = current->next;
         }
         cout << endl;

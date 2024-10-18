@@ -97,8 +97,13 @@ void initializeLine(string* names, int names_size, DoublyLinkedList& coffeeShopL
 
 
 void update(string* names, int names_size, DoublyLinkedList& coffeeShopLine){
+    int line_size = 5;
     initializeLine(names, names_size, coffeeShopLine);
     cout<<endl;
+    coffeeShopLine.print();
+    for(int i = 2; i <= TIMES; i++){
+        if(isHappened())
+    }
 }
 
 
@@ -109,9 +114,7 @@ int main() {
         return 1;
 
     DoublyLinkedList coffeeShopLine;
-    for(int i = 0; i<5; i++){
-        coffeeShopLine
-    }
+
 
     return 0;
 }
