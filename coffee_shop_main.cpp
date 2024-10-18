@@ -21,7 +21,7 @@ const double ANY_CUSTOMER_LEAVE_PERCENTAGE = 10;
 const double VIP_CUSTOMER_PERCENTAGE = 10;
 
 bool isHappened (double probability){
-    int prob = rand() % 100 + 1;  // returns random number 1-100
+    int prob = rand()+1 % 100 + 1;  // returns random number 1-100
     if(prob <= probability) {
         return true;
     }
@@ -29,7 +29,7 @@ bool isHappened (double probability){
 }
 
 string getRandomName (string* names, int names_size){
-    int value = rand() % (names_size);
+    int value = rand()+1 % names_size;
     return names[value];
 }
 
