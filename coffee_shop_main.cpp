@@ -20,6 +20,26 @@ const double LEAVE_QUEUE_END_PERCENTAGE = 20;
 const double ANY_CUSTOMER_LEAVE_PERCENTAGE = 10;
 const double VIP_CUSTOMER_PERCENTAGE = 10;
 
+bool isHappened (double probability){
+    int prob = rand() % 100 + 1;  // returns random number 1-100
+    if(prob <= probability) {
+        return true;
+    }
+}
+
+void insertCustomer (DoublyLinkedList& coffeeShopLine, string name){
+    coffeeShopLine.push_back(name);
+}
+
+void insertVIPCustomer (DoublyLinkedList& coffeeShopLine, string name){
+    coffeeShopLine.push_front(name);
+}
+
+void serviceCustomer (DoublyLinkedList& coffeeShopLine){
+    coffeeShopLine.pop_front();
+}
+
+
 
 int createNameArray (string filename, string* names) {
     ifstream inputFile("names.txt"); 
@@ -61,8 +81,7 @@ int main() {
         return 1;
 
     DoublyLinkedList coffeeShopLine;
-    
-
+    for(int i = 0; i<5)
 
     return 0;
 }
