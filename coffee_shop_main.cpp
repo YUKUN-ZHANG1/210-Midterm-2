@@ -27,17 +27,26 @@ bool isHappened (double probability){
     }
 }
 
+string getRandomName (string* names, int names_size){
+    int value = rand() % (names_size);
+    return names[value];
+}
+
 void insertCustomer (DoublyLinkedList& coffeeShopLine, string name){
     coffeeShopLine.push_back(name);
+    cout<<name<<" joins the line"<<endl;
 }
 
 void insertVIPCustomer (DoublyLinkedList& coffeeShopLine, string name){
     coffeeShopLine.push_front(name);
+    cout<<name<<" (VIP) joins the front of the line"<<endl;
 }
 
 void serviceCustomer (DoublyLinkedList& coffeeShopLine){
+    cout<<coffeeShopLine.
     coffeeShopLine.pop_front();
 }
+
 
 
 
@@ -72,6 +81,17 @@ int createNameArray (string filename, string* names) {
     return count;
 }
 
+void initializeLine(string* names, int names_size, DoublyLinkedList& coffeeShopLine){
+    for(int i = 0; i<5; i++){
+        insertCustomer(coffeeShopLine, getRandomName(names,names_size));
+    }
+}
+
+
+void update(string* names, int names_size, DoublyLinkedList& coffeeShopLine){
+    initializeLine(names, names_size, coffeeShopLine);
+    cout<<endl;
+}
 
 
 int main() {
@@ -81,7 +101,9 @@ int main() {
         return 1;
 
     DoublyLinkedList coffeeShopLine;
-    for(int i = 0; i<5)
+    for(int i = 0; i<5; i++){
+        coffeeShopLine
+    }
 
     return 0;
 }

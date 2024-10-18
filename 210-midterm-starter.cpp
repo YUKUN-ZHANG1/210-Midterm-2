@@ -76,6 +76,10 @@ public:
         delete temp;
     }
 
+    string get_pos(int pos) {
+        
+    }
+
     void delete_pos(int pos) {
         if (!head) {
             cout << "List is empty." << endl;
